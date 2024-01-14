@@ -14,16 +14,16 @@ describe('AppComponent', () => {
     expect(app).toBeTruthy();
   });
 
-  it(`should have the 'FaultCatalogAngularFrontend' title`, () => {
+  it(`should have the 'FaultCatalog' title`, () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.componentInstance;
-    expect(app.title).toEqual('FaultCatalogAngularFrontend');
+    expect(app.title).toEqual('FaultCatalog');
   });
 
   it('should render title', () => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
     const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('h1')?.textContent).toContain('Hello, FaultCatalogAngularFrontend');
+    expect(compiled.querySelector('h1')?.textContent).toContain('Hello, FaultCatalog');
   });
 });
