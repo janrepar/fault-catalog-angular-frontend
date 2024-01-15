@@ -3,6 +3,7 @@ import { environment } from '../../environments/environment';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Fault } from '../models/fault';
+import { SuccessCriterion } from '../models/success-criterion';
 
 @Injectable({
   providedIn: 'root'
@@ -15,5 +16,9 @@ export class DataService {
 
   getFaults(): Observable<Fault[]> {
     return this.httpClient.get<Fault[]>(this.path + "fault");
+  }
+
+  getSuccessCriteria(): Observable<SuccessCriterion[]> {
+    return this.httpClient.get<SuccessCriterion[]>(this.path + "successcriterion");
   }
 }
