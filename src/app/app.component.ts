@@ -5,7 +5,7 @@ import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatToolbarModule } from '@angular/material/toolbar';
-import { FaultComponent } from './fault/fault/fault.component';
+import { FaultComponent } from './fault/fault.component';
 
 @Component({
   selector: 'app-root',

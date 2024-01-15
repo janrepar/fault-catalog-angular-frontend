@@ -1,5 +1,5 @@
 import { Routes } from '@angular/router';
-import { FaultComponent } from './fault/fault/fault.component';
+import { FaultComponent } from './fault/fault.component';
 import { SuccessCriterionComponent } from './success-criterion/success-criterion.component';
 
 
