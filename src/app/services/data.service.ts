@@ -14,11 +14,19 @@ export class DataService {
 
   constructor(private httpClient: HttpClient) { }
 
+  createFault(fault: Fault) : Observable<any> {
+    return this.httpClient.post(this.path + "faultsuccesscriterion", fault);
+  }
+
   getFaults(): Observable<Fault[]> {
     return this.httpClient.get<Fault[]>(this.path + "fault");
   }
 
   getSuccessCriteria(): Observable<SuccessCriterion[]> {
     return this.httpClient.get<SuccessCriterion[]>(this.path + "successcriterion");
+  }
+
+  getSuccessCriterion(id: string): Observable<SuccessCriterion> {
+    return this.httpClient.get<SuccessCriterion>(this.path + `successcriterion/${id}`)
   }
 }
