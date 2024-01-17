@@ -1,9 +1,12 @@
 <h2 mat-dialog-title>DODAJ NAPAKO</h2>
 <div mat-dialog-content>
+    <!-- Shows either create or update form (update form has fields filled with data frim the fault that user wants to update) -->
+    @if (data === null) {
     <form class="form" (ngSubmit)="submit()">
         <mat-form-field class="full-width">
             <mat-label>Ime napake</mat-label>
-            <input required matInput name="title" [(ngModel)]="fault.title" placeholder="Vnesi ime napake v obliki N1: Ime">
+            <input required matInput name="title" [(ngModel)]="fault.title"
+                placeholder="Vnesi ime napake v obliki N1: Ime">
         </mat-form-field>
 
         <p>
@@ -14,7 +17,8 @@
             </mat-form-field>
             <mat-form-field class="full-width">
                 <mat-label>Opis</mat-label>
-                <textarea required matInput name="long" [(ngModel)]="fault.description" placeholder="Vnesi opis napake"></textarea>
+                <textarea required matInput name="long" [(ngModel)]="fault.description"
+                    placeholder="Vnesi opis napake"></textarea>
             </mat-form-field>
         </p>
 
@@ -22,23 +26,78 @@
             <tr>
                 <td><mat-form-field class="full-width">
                         <mat-label>Pogoj 1</mat-label>
-                        <input required matInput name="success-criterion-refid-1" [(ngModel)]="fault.successCriterionRefIds[0]" placeholder="Vnesi kršitev pogoja">
+                        <input required matInput name="success-criterion-refid-1"
+                            [(ngModel)]="fault.successCriterionRefIds[0]" placeholder="Vnesi kršitev pogoja">
                     </mat-form-field></td>
-                    <td><mat-form-field class="full-width">
+                <td><mat-form-field class="full-width">
                         <mat-label>Pogoj 2</mat-label>
-                        <input matInput name="success-criterion-refid-2" [(ngModel)]="fault.successCriterionRefIds[1]" placeholder="Vnesi kršitev pogoja">
+                        <input matInput name="success-criterion-refid-2" [(ngModel)]="fault.successCriterionRefIds[1]"
+                            placeholder="Vnesi kršitev pogoja">
                     </mat-form-field></td>
                 <td><mat-form-field class="full-width">
                         <mat-label>Pogoj 3</mat-label>
-                        <input matInput name="success-criterion-refid-3" [(ngModel)]="fault.successCriterionRefIds[2]" placeholder="Vnesi kršitev pogoja">
+                        <input matInput name="success-criterion-refid-3" [(ngModel)]="fault.successCriterionRefIds[2]"
+                            placeholder="Vnesi kršitev pogoja">
                     </mat-form-field></td>
                 <td><mat-form-field class="full-width">
                         <mat-label>Pogoj 4</mat-label>
-                        <input matInput name="success-criterion-refid-4" [(ngModel)]="fault.successCriterionRefIds[3]" placeholder="Vnesi kršitev pogoja">
+                        <input matInput name="success-criterion-refid-4" [(ngModel)]="fault.successCriterionRefIds[3]"
+                            placeholder="Vnesi kršitev pogoja">
                     </mat-form-field></td>
             </tr>
         </table>
         <button mat-button type="button" (click)="onNoClick()">ZAPRI</button>
-        <button mat-flat-button type="submit" [mat-dialog-close] color="primary">DODAJ NAPAKO</button>
+        <button mat-flat-button type="submit" [mat-dialog-close] color="primary">POŠLJI</button>
     </form>
+    }
+
+    @else {
+    <form class="form" (ngSubmit)="editSubmit()">
+        <mat-form-field class="full-width">
+            <mat-label>Ime napake</mat-label>
+            <input required matInput name="title" [(ngModel)]="data.title"
+                placeholder="Vnesi ime napake v obliki N1: Ime">
+        </mat-form-field>
+
+        <p>
+            <mat-form-field class="full-width">
+                <mat-label>Kratek opis</mat-label>
+                <textarea required matInput name="short" [(ngModel)]="data.shortDescription"
+                    placeholder="Vnesi kratek opis napake"></textarea>
+            </mat-form-field>
+            <mat-form-field class="full-width">
+                <mat-label>Opis</mat-label>
+                <textarea required matInput name="long" [(ngModel)]="data.description"
+                    placeholder="Vnesi opis napake"></textarea>
+            </mat-form-field>
+        </p>
+
+        <table class="full-width">
+            <tr>
+                <td><mat-form-field class="full-width">
+                        <mat-label>Pogoj 1</mat-label>
+                        <input required matInput name="success-criterion-refid-1"
+                            [(ngModel)]="data.successCriterionRefIds[0]" placeholder="Vnesi kršitev pogoja">
+                    </mat-form-field></td>
+                <td><mat-form-field class="full-width">
+                        <mat-label>Pogoj 2</mat-label>
+                        <input matInput name="success-criterion-refid-2" [(ngModel)]="data.successCriterionRefIds[1]"
+                            placeholder="Vnesi kršitev pogoja">
+                    </mat-form-field></td>
+                <td><mat-form-field class="full-width">
+                        <mat-label>Pogoj 3</mat-label>
+                        <input matInput name="success-criterion-refid-3" [(ngModel)]="data.successCriterionRefIds[2]"
+                            placeholder="Vnesi kršitev pogoja">
+                    </mat-form-field></td>
+                <td><mat-form-field class="full-width">
+                        <mat-label>Pogoj 4</mat-label>
+                        <input matInput name="success-criterion-refid-4" [(ngModel)]="data.successCriterionRefIds[3]"
+                            placeholder="Vnesi kršitev pogoja">
+                    </mat-form-field></td>
+            </tr>
+        </table>
+        <button mat-button type="button" (click)="onNoClick()">ZAPRI</button>
+        <button mat-flat-button type="submit" [mat-dialog-close] color="primary">POŠLJI</button>
+    </form>
+    }
 </div>

@@ -12,9 +12,9 @@
             <span><button *ngFor="let id of fault.successCriterionRefIds">{{ id + " " }}</button></span>
         </mat-card-content>
         <mat-card-actions>
-            <button mat-button>KOPIRAJ</button>
-            <button mat-button>UREDI</button>
-            <button mat-button>IZBRIŠI</button>
+            <button mat-button (click)="copy(fault)">KOPIRAJ</button>
+            <button mat-button (click)="openDialogForEdit(fault)">UREDI</button>
+            <button mat-button (click)="deleteFault(fault.id)">IZBRIŠI</button>
         </mat-card-actions>
     </mat-card>
 </div>

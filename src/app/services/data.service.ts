@@ -22,6 +22,14 @@ export class DataService {
     return this.httpClient.get<Fault[]>(this.path + "fault");
   }
 
+  deleteFault(id: number) : Observable<number> {
+    return this.httpClient.delete<number>(this.path + `fault/${id}`)
+    }
+
+  editFault(fault : Fault) : Observable<Fault> {
+    return this.httpClient.put<Fault>(this.path + "faultsuccesscriterion", fault);
+  }
+
   getSuccessCriteria(): Observable<SuccessCriterion[]> {
     return this.httpClient.get<SuccessCriterion[]>(this.path + "successcriterion");
   }
