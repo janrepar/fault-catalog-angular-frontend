@@ -24,6 +24,7 @@ export class FaultComponent {
     this.faults = dataService.getFaults();
   }
 
+  // Open dialog form for adding a new fault
   openDialog() : void {
     const dialogRef = this.dialog.open(CreateFaultComponent);
 
@@ -32,6 +33,7 @@ export class FaultComponent {
     });
   }
 
+  // Open dialog form for editing fault and use the fault that user wishes to edit data into the form
   openDialogForEdit(fault : Fault) : void {
     const dialogRef = this.dialog.open(CreateFaultComponent, {data: {id: fault.id,
                                                                      title: fault.title,
