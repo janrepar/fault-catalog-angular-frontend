@@ -1,6 +1,6 @@
 import { Component, Inject } from '@angular/core';
-import { Fault } from '../models/fault';
-import { DataService } from '../services/data.service';
+import { Fault } from '../../models/fault';
+import { DataService } from '../../services/data.service';
 import { FormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -29,7 +29,7 @@ export class CreateFaultComponent {
     this.dataService.createFault(this.fault)
         .subscribe({
           next: () => alert("Napaka je uspešno dodana!"),
-          error: (error) => alert(error)     
+          error: (error) => alert("Prišlo je do napake" + error)     
     })
 
     this.fault.title = "";
@@ -53,7 +53,7 @@ export class CreateFaultComponent {
     this.dataService.editFault(this.fault)
         .subscribe({
           next: () => alert("Napaka je uspešno posodobljena!"),
-          error: (error) => alert(error)     
+          error: (error) => alert("Prišlo je do napake" + error)     
     })
   }
 }

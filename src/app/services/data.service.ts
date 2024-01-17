@@ -14,12 +14,13 @@ export class DataService {
 
   constructor(private httpClient: HttpClient) { }
 
-  createFault(fault: Fault) : Observable<any> {
-    return this.httpClient.post(this.path + "faultsuccesscriterion", fault);
-  }
 
   getFaults(): Observable<Fault[]> {
     return this.httpClient.get<Fault[]>(this.path + "fault");
+  }
+
+  createFault(fault: Fault) : Observable<any> {
+    return this.httpClient.post(this.path + "faultsuccesscriterion", fault);
   }
 
   deleteFault(id: number) : Observable<number> {

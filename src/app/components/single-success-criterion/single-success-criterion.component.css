@@ -1,0 +1,9 @@
+.container {
+    min-width: 50%;
+    max-width: 100%;
+    width: 100%;
+}
+
+.sc-card {
+    width: 100%;
+}

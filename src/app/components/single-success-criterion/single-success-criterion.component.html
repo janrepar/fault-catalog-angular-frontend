@@ -1,0 +1,15 @@
+<div class="container">
+    <mat-card class="sc-card">
+        <mat-card-header>
+            <mat-card-title>Pogoj {{ (this.successCriterion | async)?.refId }} - {{ (this.successCriterion | async)?.title }}</mat-card-title>
+            <mat-card-subtitle>(Level {{ (this.successCriterion | async)?.level }})</mat-card-subtitle>
+        </mat-card-header>
+        <mat-card-content>
+            <p>{{ (this.successCriterion | async)?.description }}</p>
+            <a href="{{ (this.successCriterion | async)?.url }}">WCAG | {{(this.successCriterion | async)?.title}}</a>
+        </mat-card-content>
+        <mat-card-actions>
+            <button mat-button>POIŠČI NAPAKE S POGOJEM</button>
+        </mat-card-actions>
+    </mat-card>
+</div>

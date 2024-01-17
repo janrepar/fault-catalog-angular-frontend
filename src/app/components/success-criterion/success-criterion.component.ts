@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { SuccessCriterion } from '../models/success-criterion';
-import { DataService } from '../services/data.service';
+import { SuccessCriterion } from '../../models/success-criterion';
+import { DataService } from '../../services/data.service';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { Observable } from 'rxjs';
