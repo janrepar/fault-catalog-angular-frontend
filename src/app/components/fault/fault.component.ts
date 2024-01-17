@@ -35,6 +35,11 @@ export class FaultComponent {
     });
   }
 
+  showSuccessCriterion(refId : string) : void {
+    this.dialog.open(SingleSuccessCriterionComponent, {data: {refId}})
+    console.log("Showing success criterion" + refId)
+  }
+
   // Open dialog form for editing fault and use the fault that user wishes to edit data into the form
   openDialogForEdit(fault : Fault) : void {
     const dialogRef = this.dialog.open(CreateFaultComponent, {data: {id: fault.id,
@@ -48,21 +53,16 @@ export class FaultComponent {
     });
   }
 
-  getFaults() : void {
+  fetchFaults() : void {
     this.faults = this.dataService.getFaults();
     console.log(this.faults);
   }
 
+  // Delete fault and refresh faults on page
   deleteFault(id : any) : void {
     this.dataService.deleteFault(id)
-      .subscribe(() => {this.getFaults();})
+      .subscribe(() => {this.fetchFaults();})
     console.log("Fault with id " + id + " deleted");
-  }
-
-  showSuccessCriterion(refId : string) : void {
-    let dialogRef = this.dialog.open(SingleSuccessCriterionComponent, {data: {refId}})
-
-    console.log("Showing success criterion" + refId)
   }
 
   // Copy to clipboard (TODO: not finished outputs json data)

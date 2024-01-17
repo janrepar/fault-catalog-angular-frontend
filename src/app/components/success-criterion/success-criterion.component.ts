@@ -20,9 +20,4 @@ export class SuccessCriterionComponent {
   constructor(private dataService: DataService) {
     this.successCriteria = dataService.getSuccessCriteria();
   }
-
-  ngOnInit() : void {
-    this.successCriteria = this.dataService.getSuccessCriteria();
-    console.log(this.successCriteria);
-  }
 }

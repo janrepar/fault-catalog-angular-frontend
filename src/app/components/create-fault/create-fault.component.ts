@@ -46,7 +46,7 @@ export class CreateFaultComponent {
     this.fault.successCriterionRefIds = this.data.successCriterionRefIds;
 
     // Remove empty elements from array if user chooses to delete some of successCriterionRefIds
-    for(let i = this.fault.successCriterionRefIds.length; i > 0; i--) {
+    for(let i = this.fault.successCriterionRefIds.length; i >= 0; i--) {
       if (this.fault.successCriterionRefIds[i] === "") this.fault.successCriterionRefIds.pop();
     }
 
