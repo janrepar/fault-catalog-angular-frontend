@@ -9,7 +9,10 @@
             <a href="{{ successCriterion.url }}">WCAG | {{successCriterion.title}}</a>
         </mat-card-content>
         <mat-card-actions>
-            <button mat-button>POIŠČI NAPAKE S POGOJEM</button>
+            <button mat-button (click)="fetchFaultsByRefId(successCriterion.refId)">POIŠČI NAPAKE S POGOJEM</button>
         </mat-card-actions>
     </mat-card>
 </div>
+
+
+

@@ -8,7 +8,7 @@ import { Observable } from 'rxjs';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { CreateFaultComponent } from '../create-fault/create-fault.component';
 import { ClipboardModule, Clipboard } from '@angular/cdk/clipboard';
-import { Router, RouterLink, RouterLinkActive, RouterModule, RouterOutlet } from '@angular/router';
+import { ActivatedRoute, RouterLink, RouterLinkActive, RouterModule, RouterOutlet } from '@angular/router';
 import { SingleSuccessCriterionComponent } from '../single-success-criterion/single-success-criterion.component';
 
 @Component({
@@ -20,10 +20,17 @@ import { SingleSuccessCriterionComponent } from '../single-success-criterion/sin
 })
 export class FaultComponent {
   title = 'Fault.UI'
-  public faults: Observable<Fault[]>;
+  public faults!: Observable<Fault[]>;
 
-  constructor(private dataService: DataService, public dialog: MatDialog, private clipboard: Clipboard, private router : Router) {
-    this.faults = dataService.getFaults();
+  constructor(private dataService: DataService, public dialog: MatDialog, private clipboard: Clipboard, private route: ActivatedRoute) {
+    this.route.params.subscribe(params => {
+      let refId = params["refId"];
+      if(refId) {
+        this.faults = dataService.getFaultsBySuccessCriterionRefId(refId);
+      } else {
+        this.faults = dataService.getFaults();
+      }
+    })
   }
 
   // Open dialog form for adding a new fault
@@ -37,7 +44,7 @@ export class FaultComponent {
 
   showSuccessCriterion(refId : string) : void {
     this.dialog.open(SingleSuccessCriterionComponent, {data: {refId}})
-    console.log("Showing success criterion" + refId)
+    console.log("Showing success criterion " + refId)
   }
 
   // Open dialog form for editing fault and use the fault that user wishes to edit data into the form
@@ -57,7 +64,7 @@ export class FaultComponent {
     this.faults = this.dataService.getFaults();
     console.log(this.faults);
   }
-
+  
   // Delete fault and refresh faults on page
   deleteFault(id : any) : void {
     this.dataService.deleteFault(id)

@@ -4,6 +4,7 @@ import { SuccessCriterionComponent } from './components/success-criterion/succes
 
 
 export const routes: Routes = [
-    { path:'', component: FaultComponent },
+    { path:'home', component: FaultComponent },
     { path:'success-criteria', component: SuccessCriterionComponent },
+    { path:'**', component: FaultComponent }
 ];

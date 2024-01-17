@@ -38,4 +38,8 @@ export class DataService {
   getSuccessCriterion(id: string): Observable<SuccessCriterion> {
     return this.httpClient.get<SuccessCriterion>(this.path + `successcriterion/${id}`)
   }
+
+  getFaultsBySuccessCriterionRefId(id : string): Observable<Fault[]> {
+    return this.httpClient.get<Fault[]>(this.path + `FaultSuccessCriterion/GetFaultsBySuccessCriterionRefId/${id}`)
+  }
 }
