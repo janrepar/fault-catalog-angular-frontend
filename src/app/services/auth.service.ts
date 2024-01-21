@@ -14,10 +14,10 @@ export class AuthService {
   constructor(private http: HttpClient) { }
 
   public register(user: User): Observable<User> {
-    return this.http.post<User>(this.path + "userauth/register", user);
+    return this.http.post<User>(this.path + "register", user);
   }
 
   public login(user: User): Observable<string> {
-    return this.http.post(this.path + "userauth/login", user, { responseType: "text" })
+    return this.http.post(this.path + "login", user, { responseType: "text" });
   }
 }

@@ -4,7 +4,7 @@ export class User {
     password: string = "";
     passwordHash: number = 0;
     passwordSalt: number = 0;
-    refreshToke: string = "";
+    refreshToken: string = "";
     tokenCreated: Date = new Date;
     tokenExpires: Date = new Date;
 }
