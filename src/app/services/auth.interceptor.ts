@@ -6,7 +6,6 @@ export function AuthInterceptor (
     req: HttpRequest<any>, next: HttpHandlerFn): Observable<HttpEvent<any>> {
         console.log("Interceptor executed")
         const token = localStorage.getItem('authToken');
-        console.log('Token:', token);
 
         if (token) {
             req = req.clone({

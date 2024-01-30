@@ -24,7 +24,7 @@ export class LoginComponent {
 
   register(user: User) {
     this.authService.register(user).subscribe({
-      next: (response) => {
+      next: () => {
         this.router.navigate(['login']);
       },
       error: (err) => {

@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
+import { Router, RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
 
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
@@ -16,4 +16,13 @@ import { FaultComponent } from './components/fault/fault.component';
 })
 export class AppComponent {
   title = 'FaultCatalog';
+
+  constructor(private router: Router) {  
+
+  }
+
+  logout() : void {
+    localStorage.clear();
+    this.router.navigate(['']);
+  }
 }

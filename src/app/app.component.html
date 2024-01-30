@@ -2,16 +2,16 @@
 <header>
   <p>
     <mat-toolbar color="primary">     
-      <span role="navigation" arial-label="Primary">Katalog napak
+      <span role="navigation" aria-label="Primary">Katalog napak
         <a mat-flat-button color="primary" routerLink='/home' routerLinkActive="router-link-active"><span>KATALOG</span></a>
         <a mat-flat-button color="primary" routerLink="/success-criteria" routerLinkActive="router-link-active" ><span>WCAG POGOJI</span></a>
       </span>
       <span class="spacer"></span>
-      <button mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
-        <mat-icon>favorite</mat-icon>
-      </button>
-      <button mat-icon-button class="example-icon" aria-label="Example icon-button with share icon">
-        <mat-icon>share</mat-icon>
+      <span class="username">
+        placeholder for username
+      </span>
+      <button mat-icon-button class="example-icon" aria-label="Logout" (click)="logout()">
+        <mat-icon>logout</mat-icon>
       </button>
     </mat-toolbar>
   </p>
