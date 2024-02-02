@@ -6,11 +6,12 @@ import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
+import { UserService } from '../../services/user.service';
 
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [MatFormFieldModule, MatInputModule, MatButtonModule, FormsModule, MatInputModule],
+  imports: [MatFormFieldModule, MatInputModule, MatButtonModule, FormsModule],
   templateUrl: './login.component.html',
   styleUrl: './login.component.css'
 })
@@ -18,7 +19,7 @@ export class LoginComponent {
   user = new User;
   public message: string = "";
 
-  constructor(private authService: AuthService, private router: Router) {
+  constructor(private authService: AuthService, private router: Router, private userService: UserService) {
 
   }
 
@@ -29,7 +30,7 @@ export class LoginComponent {
       },
       error: (err) => {
         if (err.status === 400) {
-          this.message = "Username or password not provided.";
+          this.message = "Username or password not provided or user already exists.";
         } else {
           this.message = "Registration failed. Please try again later.";
         }
@@ -41,16 +42,15 @@ export class LoginComponent {
     this.authService.login(user).subscribe(
       (response: any) => {
         console.log("Response:", response);
-        const token  = response;
-        localStorage.setItem('authToken', token);
+        
+        sessionStorage.setItem("authToken", response);
+        this.userService.saveUser(user.username);
         this.router.navigate(['home']);
       },
       (error) => {
         if (error.status === 400) {
           this.message = "Invalid username or password.";
-        } else {
-          this.message = "Login failed. Please try again later.";
-        }
+        } 
       });
     }
 }

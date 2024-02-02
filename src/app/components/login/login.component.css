@@ -6,6 +6,13 @@
 
 .form {
     min-width: 10%;
-    max-width: 60%;
+    max-width: 45%;
+    width: 100%;
+    margin: auto;
+    margin-top: 10%;
+    justify-content: center;
+}
+
+mat-form-field {
     width: 100%;
 }

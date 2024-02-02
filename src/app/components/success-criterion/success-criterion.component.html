@@ -1,4 +1,10 @@
-<div class="container" *ngFor="let successCriterion of (successCriteria | async)">
+<div class="container">
+    <mat-form-field>
+        <mat-label>Iskanje</mat-label>
+        <input type="text" matInput name="search" [(ngModel)]="searchTerm" (input)="searchSuccessCriteria()">
+    </mat-form-field>
+</div>
+<div class="container" *ngFor="let successCriterion of (successCriteria | async); index as i">
     <mat-card class="sc-card">
         <mat-card-header>
             <mat-card-title>Pogoj {{ successCriterion.refId }} - {{ successCriterion.title }}</mat-card-title>

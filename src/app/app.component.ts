@@ -6,6 +6,8 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { FaultComponent } from './components/fault/fault.component';
+import { UserService } from './services/user.service';
+import { User } from './models/user';
 
 @Component({
   selector: 'app-root',
@@ -16,13 +18,20 @@ import { FaultComponent } from './components/fault/fault.component';
 })
 export class AppComponent {
   title = 'FaultCatalog';
+  currentUser: any;
 
-  constructor(private router: Router) {  
+  constructor(private router: Router, private userService: UserService) {  
 
   }
 
+  ngOnInit() : void {
+    this.currentUser = this.userService.getUser();
+    console.log(this.currentUser)
+  }
+
   logout() : void {
-    localStorage.clear();
+    // Check if session storage is not undefiend and clear it on logout
+    this.userService.clean();
     this.router.navigate(['']);
   }
 }

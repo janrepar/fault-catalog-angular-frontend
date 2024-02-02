@@ -1,5 +1,9 @@
 <div class="container">
-    <button mat-button (click)="openDialog()">DODAJ NAPAKO</button>
+    <mat-form-field>
+        <mat-label>Iskanje</mat-label>
+        <input type="text" matInput name="search" [(ngModel)]="searchTerm" (input)="searchFaults()">
+    </mat-form-field>
+    <button class="add" mat-button (click)="openDialog()">DODAJ NAPAKO</button>
 </div>
 <div class="container" *ngFor="let fault of (faults | async); index as i">
     <mat-card class="fault-card">

@@ -2,14 +2,15 @@
     <form class="form" >
         <mat-form-field>
             <mat-label>Uporabniško ime</mat-label>
-            <input required matInput name="username" [(ngModel)]="user.username">
+            <input required type="text" matInput name="username" [(ngModel)]="user.username">
         </mat-form-field>
         <mat-form-field>
             <mat-label>Geslo</mat-label>
-            <input required matInput name="password" [(ngModel)]="user.password">
+            <input required type="password" matInput name="password" [(ngModel)]="user.password">
         </mat-form-field>
         <button mat-button type="submit" (click)="register(user)">REGISTRIRAJ SE</button>
         <button mat-flat-button type="submit" (click)="login(user)" color="primary">VPIŠI SE</button>
+        
+        <div class="alert" role="alert"><br>{{ this.message }}<br></div>
     </form>
-    <div><br>{{ this.message }}<br></div>
 </div>
